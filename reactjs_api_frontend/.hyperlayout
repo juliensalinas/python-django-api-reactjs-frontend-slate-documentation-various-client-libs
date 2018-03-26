@@ -1,0 +1,6 @@
+[
+  [
+    "npm run -s dev-webpack-server",
+    "npm run -s dev-server"
+  ]
+]

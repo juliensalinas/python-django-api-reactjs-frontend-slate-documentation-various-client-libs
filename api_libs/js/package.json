@@ -1,0 +1,78 @@
+{
+  "name": "api-client",
+  "version": "1.0.4",
+  "description": "This Api library enables you to request the Api API in a convenient way. For more information about the Api API please see https://api.myapp.com",
+  "main": "lib/index.js",
+  "author": "My App <info@myapp.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/api/api-js"
+  },
+  "bugs": {
+    "url": "https://github.com/api/api-js/issues"
+  },
+  "engines": {
+    "node": ">=7.6.0"
+  },
+  "config": {
+    "path_docs": "docs",
+    "path_lib": "lib",
+    "path_src": "src",
+    "title": "myapp"
+  },
+  "scripts": {
+    "build-lib": "rimraf lib && babel $npm_package_config_path_src -d $npm_package_config_path_lib --ignore '__tests__'",
+    "build": "npm run -s eslint -- --quiet && npm run -s test && env-cmd production npm run -s build-lib",
+    "doc": "documentation build $npm_package_config_path_src/index.js $npm_package_config_path_src/types.js -f html -o $npm_package_config_path_docs --name $npm_package_config_title -a public -a undefined -c documentation.yml",
+    "eslint": "eslint --ext .js $npm_package_config_path_src",
+    "open-doc": "npm run -s doc && opn $npm_package_config_path_docs/index.html",
+    "prepublish": "npm run -s build",
+    "private-doc": "npm run -s doc -- -a public -a private -a protected -a undefined",
+    "test": "env-cmd test jest --config ./jest.json"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-runtime": "^6.23.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-syntax-export-extensions": "^6.13.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-flow-comments": "^6.22.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "documentation": "^4.0.0-rc.1",
+    "env-cmd": "^5.1.0",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-classes": "^0.1.1",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-ideal": "^0.1.3",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-lodash": "^2.4.4",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-objects": "^1.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-promiseparams": "^1.0.8",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.51.0",
+    "jest": "^20.0.4",
+    "nock": "^9.0.14",
+    "opn-cli": "^3.1.0",
+    "rimraf": "^2.6.1",
+    "sinon": "^2.3.8",
+    "webpack": "^3.3.0"
+  }
+}

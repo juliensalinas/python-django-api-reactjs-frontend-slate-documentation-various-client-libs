@@ -1,0 +1,59 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<v-navigation-drawer persistent dark :mini-variant.sync="mini" v-model="drawer">
+  <v-list class="pa-0">
+    <v-list-item>
+      <v-list-tile avatar tag="div">
+        <v-list-tile-avatar>
+          <img style="border-radius:0" src="{% static 'billing/images/favicon.svg' %}" />
+        </v-list-tile-avatar>
+        <v-list-tile-content>
+          <v-list-tile-title>{% trans "API" %}</v-list-tile-title>
+        </v-list-tile-content>
+        <v-list-tile-action>
+          <v-btn light icon @click.native.stop="mini = !mini">
+            <v-icon>chevron_left</v-icon>
+          </v-btn>
+        </v-list-tile-action>
+      </v-list-tile>
+    </v-list-item>
+  </v-list>
+  {% verbatim %}
+    <v-list class="pt-0" dense>
+      <v-divider></v-divider>
+      <v-list-item v-for="group1Item in group1Items" :key="group1Item">
+        <v-list-tile :href="group1Item.url">
+          <v-list-tile-action>
+            <v-icon light>{{ group1Item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ group1Item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list-item v-for="group2Item in group2Items" :key="group2Item">
+        <v-list-tile :href="group2Item.url">
+          <v-list-tile-action>
+            <v-icon light>{{ group2Item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ group2Item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list-item v-for="group3Item in group3Items" :key="group3Item">
+        <v-list-tile :href="group3Item.url">
+          <v-list-tile-action>
+            <v-icon light>{{ group3Item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ group3Item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list-item>        
+    </v-list>
+  {% endverbatim %}
+</v-navigation-drawer>

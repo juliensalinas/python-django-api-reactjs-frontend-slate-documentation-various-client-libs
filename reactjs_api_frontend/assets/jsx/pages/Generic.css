@@ -1,0 +1,19 @@
+.title {
+  font-weight: 400;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.pageTitle {
+  font-weight: 400;
+}
+
+.notFoundTitle {
+  text-align: center;
+}
+
+.subTitle {
+  margin-top: 1em;
+  font-weight: 200;
+  font-size: 1.8rem;
+}

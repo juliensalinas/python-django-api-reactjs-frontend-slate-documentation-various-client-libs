@@ -1,0 +1,93 @@
+{% extends 'billing/base.html' %}
+{% load humanize %}
+{% load i18n %}
+
+{% block main %}
+    <main>
+      <v-container fluid class="text-xs-left">
+        {% if success_message %}
+          <p>
+            <v-alert success dismissible v-model="alert">
+              {{ success_message }}
+            </v-alert>
+          </p>
+        {% endif %}
+        {% if error_message %}
+          <p>
+            <v-alert error dismissible v-model="alert">
+              {{ error_message }}
+            </v-alert>
+          </p>
+        {% endif %}
+        {% comment %}
+          Do this because sometimes (in case of payment error for example)
+          the context is not set.
+        {% endcomment %}
+        {% if plan.monthly_requests and remaining_requests %}
+          <div class="title mb-4">{% trans "Here is your current subscription plan" %}</div>
+          <p>
+            {% trans "You are currently allowed to request the API" %} {{ plan.monthly_requests|intcomma }} {% trans "times per month." %}</br>
+            {% if plan.euro_price %}
+              {% trans "Price of your plan:" %} {{ plan.euro_price|intcomma }}€
+            {% else %}
+              {% trans "This plan is free of charge." %}
+            {% endif %}
+          </p>
+          <p>
+            {% if remaining_requests <= 0 %} 
+              {% trans "You have no more requests available.
+            {% else %}
+              {% trans "You have" %} {{ remaining_requests|intcomma }} {% trans "requests left." %}
+            {% endif %}</br>
+            {% trans "You will get new requests by" %} {{ current_period_end_date|naturalday }}.</br>
+            {% trans "If you need more requests now, feel free to upgrade your subscription plan !" %}
+          </p>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-card height="225px" class="elevation-0 white">
+                <v-card-text>
+                  <div>
+                    {% comment %}Should actually use the href prop of v-btn but could not make it work...{% endcomment %}
+                    <a href="{% url 'plans' %}" style="text-decoration:none"><v-btn dark default>{% trans "Switch plan !" %}</v-btn></a>
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        {% endif %}   
+      </v-container>
+    </main>
+{% endblock %}
+
+{% block js %}
+  <script>
+    var main = new Vue({
+      el: '#main',
+      data: {
+        drawer: true,
+        group1Items: [
+          { title: "{% trans "Dashboard" %}", icon: 'dashboard', url: '/client' },
+          { title: "{% trans "Company Lookup" %}", icon: 'domain', url: '/client/company' },
+          { title: "{% trans "Contact Lookup" %}", icon: 'person', url: '/client/contact' },
+          { title: "{% trans "Account" %}", icon: 'settings', url: '/client/account' },
+          { title: "{% trans "API Key" %}", icon: 'vpn_key', url: '/client/key' },
+          { title: "{% trans "Subscription" %}", icon: 'credit_card', url: "{% url "subscription" %}" },
+        ],
+        group2Items: [
+          { title: "{% trans "API Docs" %}", icon: 'book', url: '/' },
+          { title: "{% trans "Support" %}", icon: 'help', url: 'client/support' },
+        ],
+        group3Items: [
+          { title: "{% trans "Logout" %}", icon: 'arrow_back', url: '/client' },
+        ],      
+        mini: false,
+        right: null,
+        alert: true,
+      }
+    })    
+  </script> 
+  <script>
+    document.getElementById("general-loader").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  </script> 
+{% endblock %}  

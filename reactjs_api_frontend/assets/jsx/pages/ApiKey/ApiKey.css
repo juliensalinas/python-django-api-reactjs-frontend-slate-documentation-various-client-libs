@@ -1,0 +1,16 @@
+.token {
+  border: 1px solid #e6e9ec;
+  border-radius: 0.5em;
+  color: #333332;
+  font-family: monospace;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 1em 0;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+
+  @mixin for-tablet-portrait-up {
+    padding: 1em 1.5em;
+  }
+}

@@ -1,0 +1,32 @@
+/*@keyframes fadeInFromNone {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+
+  99.9% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}*/
+
+.gettingStarted {
+  transition-property: opacity, visibility;
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0.5s;
+
+  &.isHidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.list {
+  margin-left: 2em;
+  margin-top: 0;
+}

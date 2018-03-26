@@ -1,0 +1,21 @@
+[ignore]
+
+.*/.build/.*
+.*/.deploy/.*
+.*/node_modules/fbjs/flow/.*
+.*/node_modules/flux/flow/.*
+.*/node_modules/stylelint/.*
+
+[include]
+
+[libs]
+
+./flow-typed/npm
+
+[options]
+
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+esproposal.class_instance_fields=enable
+esproposal.export_star_as=enable
+esproposal.class_static_fields=enable
+unsafe.enable_getters_and_setters=true

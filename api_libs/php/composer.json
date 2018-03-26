@@ -1,0 +1,26 @@
+{
+  "name": "api/api-client",
+  "description": "This Api library enables you to request the Api API in a convenient way. For more information about the Api API please see https://api.myapp.com",
+  "homepage": "http://github.com/api/api-php",
+  "license": "MIT",
+  "keywords": ["http", "api", "api"],
+  "version": "1.4",
+  "authors": [
+    {
+      "name": "My App",
+      "email": "info@myapp.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+        "Api": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.3",
+    "nategood/httpful": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  }
+}

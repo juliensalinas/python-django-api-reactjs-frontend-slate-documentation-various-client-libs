@@ -1,0 +1,16 @@
+.lookupView {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}

@@ -1,0 +1,19 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "syntax-export-extensions",
+    "transform-export-extensions",
+    "transform-class-properties",
+    "transform-flow-comments",
+    "transform-builtin-extend"
+  ]
+}

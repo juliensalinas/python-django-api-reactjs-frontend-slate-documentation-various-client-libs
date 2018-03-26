@@ -1,0 +1,14 @@
+toc:
+  - name: Getting started
+    file: README.md
+  - name: NPM scripts
+    file: npmScripts.md
+  - Api
+  - name: Result
+  - Company
+  - Contact
+  - name: Types
+  - ApiOptions
+  - Options
+  - Token
+  - name: Errors

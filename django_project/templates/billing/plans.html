@@ -1,0 +1,69 @@
+{% extends 'billing/base.html' %}
+{% load humanize %}
+{% load i18n %}
+
+{% block main %}
+    <main>
+      <v-container fluid>
+        <div class="title">{% trans "Choose the plan you need" %}</div>
+        <v-container fluid>
+          <v-layout row wrap>
+            <v-flex xs12 md6>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  {% for subscription_plan in subscription_plans %}
+                    {% comment %} <!-- Cannot use |intcomma for the moment because of a bug in Vuetify: it transforms 10&nbsp;000 to 10&amp;nbsp;000 so browser displays 10&nbsp;000 in the end...--> {% endcomment %}
+                     <v-radio label="{{ subscription_plan.monthly_requests }} {% trans "requests/month" %} | {{ subscription_plan.euro_price }}€" v-model="planSelection" value="{{ subscription_plan.name }}" dark></v-radio>
+                  {% endfor %}
+                  <div v-if="planSelection">
+                    <a :href="paymentUrl" style="text-decoration:none"><v-btn dark default>{% trans "Subscribe" %}</v-btn></a>
+                  </div>
+                  <div v-else>
+                    <v-btn dark default disabled>{% trans "Subscribe" %}</v-btn>
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-container>
+    </main>
+{% endblock %}
+
+{% block js %}
+  <script>
+    var main = new Vue({
+      el: '#main',
+      data: {
+        drawer: true,
+        group1Items: [
+          { title: "{% trans "Dashboard" %}", icon: 'dashboard', url: '/client' },
+          { title: "{% trans "Company Lookup" %}", icon: 'domain', url: '/client/company' },
+          { title: "{% trans "Contact Lookup" %}", icon: 'person', url: '/client/contact' },
+          { title: "{% trans "Account" %}", icon: 'settings', url: '/client/account' },
+          { title: "{% trans "API Key" %}", icon: 'vpn_key', url: '/client/key' },
+          { title: "{% trans "Subscription" %}", icon: 'credit_card', url: "{% url "subscription" %}" },
+        ],
+        group2Items: [
+          { title: "{% trans "API Docs" %}", icon: 'book', url: '/' },
+          { title: "{% trans "Support" %}", icon: 'help', url: 'client/support' },
+        ],
+        group3Items: [
+          { title: "{% trans "Logout" %}", icon: 'arrow_back', url: '/client' },
+        ],      
+        mini: false,
+        right: null,
+        planSelection : '',
+      },
+      computed: {
+        paymentUrl: function () {
+          return "{% url 'payment' %}?plan=" + this.planSelection
+        }
+      }
+    })    
+  </script>  
+  <script>
+    document.getElementById("general-loader").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  </script>
+{% endblock %}  

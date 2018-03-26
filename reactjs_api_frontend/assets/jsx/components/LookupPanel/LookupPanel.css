@@ -1,0 +1,19 @@
+.lookupPanel {
+  background-color: $white;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.2);
+  margin: 2.5em auto 2.5em auto;
+  width: 99%;
+  padding: 0.5em;
+
+  @mixin for-tablet-portrait-up {
+    padding: 1em;
+    max-width: 80%;
+  }
+}
+
+.header {
+  border-bottom: 1px solid #eaeef1;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}

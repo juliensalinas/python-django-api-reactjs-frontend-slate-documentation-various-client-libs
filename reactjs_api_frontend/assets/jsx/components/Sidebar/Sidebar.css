@@ -1,0 +1,48 @@
+.sidebar {
+  font-size: 14px;
+  @mixin for-tablet-portrait-up {
+    font-size: 14px;
+  }
+  @mixin for-tablet-landscape-up {
+    font-size: 16px;
+  }
+}
+
+.nav {
+  padding-bottom: 1em;
+
+  + nav {
+    border-top: 1px solid #eaeef1;
+    padding-top: 1em;
+  }
+}
+
+.item {
+  align-items: center;
+  color: #c7d1d8;
+  display: flex;
+  width: 100%;
+
+  &.itemActive {
+    color: #fff;
+  }
+}
+
+.itemIcon {
+  padding: 0.2em 0.2em 0.2em 0;
+  width: 2em;
+}
+
+.itemText {
+  flex: 1 1 auto;
+  padding-left: 1em;
+}
+
+.logo {
+  display: none;
+  width: 100%;
+
+  @mixin for-tablet-portrait-up {
+    display: block;
+  }
+}

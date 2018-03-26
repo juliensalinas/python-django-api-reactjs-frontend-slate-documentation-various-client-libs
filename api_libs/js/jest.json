@@ -1,0 +1,14 @@
+{
+  "automock": false,
+  "testRegex": "(/__tests__/.*\\.(test|spec))\\.(js|jsx)?$",
+  "testPathIgnorePatterns": [
+  ],
+  "coveragePathIgnorePatterns": [
+  ],
+  "collectCoverage": false,
+  "coverageReporters": ["text", "html"],
+  "coverageDirectory": "./coverage/jest",
+  "globals": {
+    "window": true
+  }
+}

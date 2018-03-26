@@ -1,0 +1,8 @@
+display_name = "api-client"
+library_name = "api-client"
+version = "1.0.4"
+author = "My App"
+author_email = "info@myapp.com"
+license = "MIT"
+url = "https://github.com/api/api-python"
+description = "This Api library enables you to request the Api API in a convenient way. For more information about the Api API please see https://api.myapp.com"

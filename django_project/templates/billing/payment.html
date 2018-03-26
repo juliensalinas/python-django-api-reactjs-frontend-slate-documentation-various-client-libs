@@ -1,0 +1,146 @@
+{% extends 'billing/base.html' %}
+{% load humanize %}
+{% load i18n %}
+
+{% block main %}
+    <main>
+      <v-container fluid>
+        <div class="title">{% trans "Payment" %} <v-icon dark>lock</v-icon></div>
+        <v-card class="grey lighten-3 mt-3 pa-3">
+          <p class="mt-3">{% trans "Requests per month:" %} {{ subscription_plan.monthly_requests|intcomma }}</p>
+          <p><strong>{% trans "Price:" %} {{ subscription_plan.euro_price|intcomma }}€</strong></p>
+        </v-card>
+        <v-card class="grey lighten-3 mt-3 pa-3">
+          <form action="{% url 'get_stripe_token' %}" method="post" id="payment-form">
+            <div class="form-row">
+              <v-layout row>
+                <v-flex xs6 class="mt-3">
+                  <v-card-text>{% trans "Card number" %}</v-card-text>
+                  <v-card><v-card-text><div id="card-number"></div></v-card-text></v-card>
+                </v-flex>
+                <v-flex xs3 class="mt-3">
+                  <v-card-text>{% trans "Expiration date" %}</v-card-text>
+                  <v-card><v-card-text><div id="card-expiry"></div></v-card-text></v-card>
+                </v-flex>
+                <v-flex xs3 class="mt-3">
+                  <v-card-text>{% trans "CVC" %}</v-card-text>
+                  <v-card><v-card-text><div id="card-cvc"></div></v-card-text></v-card>
+                </v-flex>
+              </v-layout>
+            </div>
+            <v-btn type="submit" :loading="loading" @click.native="loader = 'loading'" :disabled="loading" dark default class="mt-5">{% trans "Submit Payment" %}</v-btn>
+            <v-card-text class="red--text mt-3"><div id="card-errors" role="alert"></div></v-card-text>
+            <input type="hidden" name="plan" value="{{ subscription_plan.name }}">
+          </form>
+        </v-card>
+      </v-container>
+    </main>
+{% endblock %}
+
+{% block js %}
+  <script>
+    var main = new Vue({
+      el: '#main',
+      data: {
+        drawer: true,
+        group1Items: [
+          { title: "{% trans "Dashboard" %}", icon: 'dashboard', url: '/client' },
+          { title: "{% trans "Company Lookup" %}", icon: 'domain', url: '/client/company' },
+          { title: "{% trans "Contact Lookup" %}", icon: 'person', url: '/client/contact' },
+          { title: "{% trans "Account" %}", icon: 'settings', url: '/client/account' },
+          { title: "{% trans "API Key" %}", icon: 'vpn_key', url: '/client/key' },
+          { title: "{% trans "Subscription" %}", icon: 'credit_card', url: "{% url "subscription" %}" },
+        ],
+        group2Items: [
+          { title: "{% trans "API Docs" %}", icon: 'book', url: '/' },
+          { title: "{% trans "Support" %}", icon: 'help', url: 'client/support' },
+        ],
+        group3Items: [
+          { title: "{% trans "Logout" %}", icon: 'arrow_back', url: '/client' },
+        ],      
+        mini: false,
+        right: null,
+        loader: null,
+        loading: false,
+      },
+      watch: {
+        loader () {
+          const l = this.loader
+          this[l] = !this[l]
+          this.loader = null
+        }        
+      }
+    })    
+  </script> 
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    {% comment %}/* var stripe = Stripe('pk_test_PECddBZcHl7KfizBSx92Dyvm');*/ {% endcomment %}
+    var stripe = Stripe('pk_live_5pWIDwNxFpL9Ptyn9Y9CeCKX');
+
+    var elements = stripe.elements();
+
+    var style = {
+      base: {
+        lineHeight: '30px',
+        fontFamily: 'Roboto',
+        fontSize: '20px',
+      },
+    };
+
+    var cardNumber = elements.create('cardNumber', {
+      style : style,
+    });
+    cardNumber.mount('#card-number');
+
+    var cardExpiry = elements.create('cardExpiry', {
+      style : style,
+    });
+    cardExpiry.mount('#card-expiry');
+
+    var cardCvc = elements.create('cardCvc', {
+      style : style,
+      placeholder : "123",
+    });
+    cardCvc.mount('#card-cvc');
+
+    cardNumber.addEventListener('change', function(event) {
+      var displayError = document.getElementById('card-errors');
+      if (event.error) {
+        displayError.textContent = event.error.message;
+        main.loading = false;
+      } else {
+        displayError.textContent = '';
+      }
+    });
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      stripe.createToken(cardNumber).then(function(result) {
+        if (result.error) {
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+          main.loading = false;
+        } else {
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+
+    function stripeTokenHandler(token) {
+      var form = document.getElementById('payment-form');
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'stripeToken');
+      hiddenInput.setAttribute('value', token.id);
+      form.appendChild(hiddenInput);
+
+      form.submit();
+    };
+  </script>
+  <script>
+    document.getElementById("general-loader").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  </script>
+{% endblock %}  

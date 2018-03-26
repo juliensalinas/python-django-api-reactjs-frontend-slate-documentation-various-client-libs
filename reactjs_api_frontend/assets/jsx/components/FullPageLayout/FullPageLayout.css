@@ -1,0 +1,90 @@
+.content {
+  padding: 1em;
+
+  /*font-size: 2rem;*/
+
+  /*min-width: 100%;
+  min-height: 100%;
+  background-color: #fff;*/
+}
+
+.aside {
+  background-color: #424242;
+  bottom: 0;
+  color: #fff;
+  font-size: 1.4rem;
+  left: 0;
+  min-width: 200px;
+  padding: 1em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  visibility: hidden;
+
+  transition: visibility 0s ease-in-out 0.5s;
+
+  &.menuIsOpen {
+    transition: visibility 0s ease-in-out 0s;
+    visibility: visible;
+  }
+
+  @mixin for-tablet-portrait-up {
+    font-size: 1rem;
+    max-width: 300px;
+    min-width: 250px;
+    position: static;
+    visibility: visible;
+  }
+}
+
+.container {
+  bottom: 100%;
+  flex: 1 1 auto;
+  font-size: 1.4rem;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  top: 0;
+  transition: left 0.5s ease-in-out;
+  z-index: 1;
+
+  @mixin for-tablet-portrait-up {
+    font-size: 1rem;
+  }
+
+  @mixin for-tablet-portrait-up {
+    position: static;
+  }
+
+  &.menuIsOpen {
+    left: 200px;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  align-items: center;
+
+  @mixin for-tablet-portrait-up {
+    display: none;
+  }
+}
+
+.menuHandler {
+  color: #424242;
+  height: 100%;
+  width: 100%;
+}
+
+.menuHandlerLink {
+  display: block;
+  height: 3.5em;
+  width: 3.5em;
+}
+
+.logo {
+  color: #424242;
+  flex: 1 1 auto;
+}

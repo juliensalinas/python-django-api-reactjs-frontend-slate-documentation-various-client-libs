@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 01:57-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: billing/views.py:141
+msgid ""
+"Your new subscription is now set.\n"
+"        Thank you !"
+msgstr ""
+"Votre nouvel abonnement a bien été pris en compte.\n"
+"        Merci !"
+
+#: billing/views.py:242
+msgid ""
+"Your payment was successfull.\n"
+"    You will receive a receipt by email soon.\n"
+"    Thank you and enjoy your new subscription !"
+msgstr ""
+"Votre paiement a été traité avec succès.\n"
+"    Vous recevrez bientôt un reçu par email.\n"
+"    Merci, nous espérons que ce service vous plait !"
+
+#: templates/billing/header.html:8
+#: templates/billing/v_navigation_drawer.html:11
+msgid "API"
+msgstr "API Fasttrack"
+
+#: templates/billing/payment.html:8
+msgid "Payment"
+msgstr "Paiement"
+
+#: templates/billing/payment.html:10
+msgid "Requests per month:"
+msgstr "Requêtes par mois:"
+
+#: templates/billing/payment.html:11
+msgid "Price:"
+msgstr "Prix:"
+
+#: templates/billing/payment.html:18
+msgid "Card number"
+msgstr "Numéro de carte"
+
+#: templates/billing/payment.html:22
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
+#: templates/billing/payment.html:26
+msgid "CVC"
+msgstr "CVC"
+
+#: templates/billing/payment.html:31
+msgid "Submit Payment"
+msgstr "Soumettre le paiement"
+
+#: templates/billing/payment.html:50 templates/billing/plans.html:41
+#: templates/billing/subscription.html:73
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: templates/billing/payment.html:51 templates/billing/plans.html:42
+#: templates/billing/subscription.html:74
+msgid "Company Lookup"
+msgstr "Recherche d'entreprise"
+
+#: templates/billing/payment.html:52 templates/billing/plans.html:43
+#: templates/billing/subscription.html:75
+msgid "Contact Lookup"
+msgstr "Recherche de contact"
+
+#: templates/billing/payment.html:53 templates/billing/plans.html:44
+#: templates/billing/subscription.html:76
+msgid "Account"
+msgstr "Compte"
+
+#: templates/billing/payment.html:54 templates/billing/plans.html:45
+#: templates/billing/subscription.html:77
+msgid "API Key"
+msgstr "Clé API"
+
+#: templates/billing/payment.html:55 templates/billing/plans.html:46
+#: templates/billing/subscription.html:78 templates/billing/v_toolbar.html:5
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: templates/billing/payment.html:58 templates/billing/plans.html:49
+#: templates/billing/subscription.html:81
+msgid "API Docs"
+msgstr "Doc de l'API"
+
+#: templates/billing/payment.html:59 templates/billing/plans.html:50
+#: templates/billing/subscription.html:82
+msgid "Support"
+msgstr "Support"
+
+#: templates/billing/payment.html:62 templates/billing/plans.html:53
+#: templates/billing/subscription.html:85
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: templates/billing/plans.html:8
+msgid "Choose the plan you need"
+msgstr "Choisissez l'offre qui colle le mieux a vos besoins"
+
+#: templates/billing/plans.html:15
+msgid "requests/month"
+msgstr "requêtes/mois"
+
+#: templates/billing/plans.html:18 templates/billing/plans.html:21
+msgid "Subscribe"
+msgstr "Souscrire"
+
+#: templates/billing/subscription.html:28
+msgid "Here is your current subscription plan"
+msgstr "Voici votre abonnement actuel"
+
+#: templates/billing/subscription.html:30
+msgid "You are currently allowed to request the API"
+msgstr "Vous êtes actuellement autorisé à utiliser l'API "
+
+#: templates/billing/subscription.html:30
+msgid "times per month."
+msgstr "fois par mois."
+
+#: templates/billing/subscription.html:32
+msgid "Price of your plan:"
+msgstr "Tarif de votre offre:"
+
+#: templates/billing/subscription.html:34
+msgid "This plan is free of charge."
+msgstr "Cette offre est gratuite."
+
+#: templates/billing/subscription.html:41
+msgid "You have"
+msgstr "Vous avez"
+
+#: templates/billing/subscription.html:41
+msgid "requests left."
+msgstr "requêtes encore disponibles."
+
+#: templates/billing/subscription.html:43
+msgid "You will get new requests by"
+msgstr "Date de rechargement de votre compte:"
+
+#: templates/billing/subscription.html:44
+msgid ""
+"If you need more requests now, feel free to upgrade your subscription plan !"
+msgstr ""
+"Si vous avez besoin d'effectuer plus de requêtes, n'hésitez pas à souscrire "
+"à l'offre supérieure dès maintenant !"
+
+#: templates/billing/subscription.html:53
+msgid "Switch plan !"
+msgstr "Changer d'offre !"
+
+#: utils/billing_errors.py:10
+msgid "An error occured. Please try again."
+msgstr "Une erreur est survenue. Veuillez réessayer."
+
+#: utils/billing_errors.py:11
+msgid ""
+"An error occured during payment.\n"
+"            Please try again or contact us.\n"
+"            You have not been charged."
+msgstr ""
+"Une erreur est survenue durant le paiement.\n"
+"            Veuillez réessayer ou bien nous contacter.\n"
+"            Votre carte n'a pas été débitée."

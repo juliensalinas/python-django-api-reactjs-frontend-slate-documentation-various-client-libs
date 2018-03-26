@@ -1,0 +1,121 @@
+toc:
+  - name: Website
+    file: README.md
+  - name: Server side
+    description: About all code in `/src`
+  - name: NPM scripts
+    file: npmScripts.md
+  - name: Gulp tasks
+    file: gulpTasks.md
+  - generate
+  - name: Constants
+  - API_URL
+  - DEFAULT_LOCALE
+  - LOCALES
+  - MOMENT_FORMAT
+  - PRODUCTION_ASSETS_PATH
+  - TIMEOUT
+  - WEBSITE_TITLE
+  - WEBSITE_URL
+  - name: Production settings
+    description: Can be changed in `/src/settings/(public|private)/production.js`
+  - BASE_SELF_HOSTNAME
+  - GOOGLE_ANALYTICS_KEY
+  - name: Server common code
+  - extendError
+  - getErrorContent
+  - getLayout
+  - name: Client side
+    description: About all code in `/assets`
+  - name: Client common code
+  - checkNewPassword
+  - checkForgottenPassword
+  - checkLogin
+  - checkRegister
+  - errorForResponse
+  - formatDate
+  - getAjv
+  - getAxiosInstance
+  - getStore
+  - getUrl
+  - handleError
+  - jsonToFormData
+  - PrivateRoute
+  - PublicRoute
+  - WithFakeStore
+  - name: Redux actions
+  - changePasswordWithSecretRequest
+  - clearError
+  - getCompany
+  - getContact
+  - hideGettingStarted
+  - loginRequest
+  - logout
+  - registerRequest
+  - removeCompanyResult
+  - removeContactResult
+  - requestError
+  - resetPasswordRequest
+  - sendingRequest
+  - name: Saga methods
+    description: https://redux-saga.github.io/redux-saga/
+  - changePasswordWithSecretFlow
+  - getCompanyFlow
+  - getContactFlow
+  - loginFlow
+  - registerFlow
+  - resetPasswordFlow
+  - name: Auth
+  - changePasswordWithSecret
+  - checkChangePasswordSecret
+  - infos
+  - login
+  - register
+  - resetPassword
+  - name: Auth errors
+  - IncorrectEmailFormatError
+  - IncorrectPasswordFormatError
+  - NoEmailSuppliedError
+  - NoPasswordConfirmationSupploadError
+  - NoPasswordSuppliedError
+  - NoSecretSuppliedError
+  - NoUserFoundError
+  - PasswordAndPasswordConfirmationNotEqualError
+  - PrivateLinkExpiredError
+  - ProblemDuringTokenCreationError
+  - ProblemDuringUserRightsCreationError
+  - UserAlreadyExistsError
+  - WrongHTTPMethodError
+  - name: Client errors
+  - InvalidDomainError
+  - InvalidEmailError
+  - name: React components
+  - BaseLayout
+  - Content
+  - ErrorMessage
+  - FullPageLayout
+  - GettingStartedComponent
+  - Link
+  - LinkButton
+  - LookupForm
+  - LookupPanel
+  - LookupResult
+  - LookupView
+  - NavLink
+  - SidebarComponent
+  - SidebarItem
+  - Wrapper
+  - name: React pages
+  - ApiKeyComponent
+  - AccountComponent
+  - ChangePasswordWithSecretComponent
+  - CompanyLookupComponent
+  - ContactLookupComponent
+  - DashboardComponent
+  - ForgottenPasswordComponent
+  - GetStartedComponent
+  - LoginComponent
+  - LogoutComponent
+  - NoMatch
+  - RegisterComponent
+  - Support

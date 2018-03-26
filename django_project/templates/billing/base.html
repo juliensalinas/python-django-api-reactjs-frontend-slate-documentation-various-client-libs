@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+      {% include "billing/header.html" %}
+  <body>
+    <div id="general-loader"></div>
+    <v-app id="main" style="display:none;">
+      {% include "billing/v_navigation_drawer.html" %}
+      {% include "billing/v_toolbar.html" %}
+      {% block main %}{% endblock %}
+    </v-app>
+    {% block js %}{% endblock %}  
+  </body>
+</html>

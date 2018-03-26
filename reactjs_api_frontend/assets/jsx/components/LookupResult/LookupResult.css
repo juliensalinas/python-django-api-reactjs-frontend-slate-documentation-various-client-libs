@@ -1,0 +1,44 @@
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.panel {
+  /*font-size: 1.5rem;*/
+}
+
+.list {
+  @mixin for-tablet-portrait-up {
+    max-height: 400px;
+    overflow: auto;
+  }
+}
+
+.loading {
+  font-size: 3rem;
+  padding: 1em;
+  width: 100%;
+}
+
+.spinner {
+  animation: spin 1.5s linear infinite;
+  display: block;
+  margin: auto;
+}
+
+.link {
+  color: #499aff;
+  text-decoration: none;
+
+  &:hover {
+    color: #499aff;
+    text-decoration: none;
+  }
+}
+
+.row {
+  &:first-of-type {
+    border-top: 0;
+  }
+}
